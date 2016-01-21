@@ -4,11 +4,14 @@
   "description": "Base para comesar con ReactJS y Webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "author": "@wfpaisa",
   "license": "ISC",
   "devDependencies": {
+    "webpack": "^1.12.11"
+  },
+  "dependencies": {
     "webpack": "^1.12.11"
   }
 }
