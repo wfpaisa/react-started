@@ -13,6 +13,5 @@
 
 ## Iniciar
 - `npm install`
-- `npm install http-server -g`
-- en una terminal compilo los scripts: `npm run build` y en otra corro el servidor: `http-server`
-- en el navegador voy a: http://localhost:8080/build/
+- en una terminal inicio todo con: `npm run dev`
+- en el navegador voy a: http://localhost:8080/

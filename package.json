@@ -4,7 +4,8 @@
   "description": "Base para comesar con ReactJS y Webpack",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
   },
   "author": "@wfpaisa",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "webpack": "^1.12.11"
   },
   "dependencies": {
-    "webpack": "^1.12.11"
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
   }
 }
