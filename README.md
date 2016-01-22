@@ -14,4 +14,4 @@
 ## Iniciar
 - `npm install`
 - en una terminal inicio todo con: `npm run dev`
-- en el navegador voy a: http://localhost:8080/
+- en el navegador voy a: `http://localhost:8080/` o tambien se puede ver con `http://localhost:8080/webpack-dev-server/bundle`
