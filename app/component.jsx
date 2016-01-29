@@ -1,12 +1,32 @@
-import './component.scss';
 import React from 'react';
 
-var style = {
-  color: 'blue',
-};
+//  Click en boton
+var LikeButton = React.createClass({
 
-export default class Hello extends React.Component {
-	render() {
-		return <h1 className="MyComponent-wrapper"> Prueba </h1>;
-	}
-}
+  getInitialState: function() {
+    return {
+      liked: false,
+    }
+  },
+  btnClick: function(event) {
+    this.setState({
+      liked: !this.state.liked
+    })
+  },
+  render: function() {
+
+    var text = this.state.liked ? 'Activo' : 'DesActivo'
+
+    return ( < p onClick = {
+        this.btnClick
+      } >
+      Estado: {
+        text
+      } < /p>
+    )
+  }
+})
+
+ReactDOM.render( < LikeButton / > ,
+  document.getElementById('content')
+)
