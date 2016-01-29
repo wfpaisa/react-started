@@ -1,3 +1,4 @@
+import './main.scss';
 import React from 'react';
 import Hello from './component.jsx';
 
