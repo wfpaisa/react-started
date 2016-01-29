@@ -1,34 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+var Lista = React.createClass({
+	render: function(){
+		var itemLi = function(){
+			return<li>uno</li>
+		}
 
-//  Click en boton
-var LikeButton = React.createClass({
-
-  getInitialState: function() {
-    return {
-      liked: false,
-    }
-  },
-  btnClick: function(event) {
-    this.setState({
-      liked: !this.state.liked
-    })
-  },
-  render: function() {
-
-    var text = this.state.liked ? 'Activo' : 'DesActivo'
-
-    return ( < p onClick = {
-        this.btnClick
-      } >
-      Estado: {
-        text
-      } < /p>
-    )
-  }
+		return <ul>{itemLi()}</ul>
+	}
 })
 
-ReactDOM.render( < LikeButton / > ,
+ReactDOM.render( < Lista / > ,
   document.getElementById('app')
 )
