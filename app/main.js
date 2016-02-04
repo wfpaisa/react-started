@@ -1,62 +1,70 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//clase que crea la lista de tareas
-var TodoList = React.createClass({
-    render: function(){
-    		self = this
-        var createItem = function(itemText, index){
-
-          return <li key={index}>{itemText} <span onClick={self.props.hclick.bind(null,index)}>x</span></li>
-
+var AmigosContenedor = React.createClass({
+    getInitialState: function(){
+        return {
+            nombre: 'Felipe Uribe',
+            amigos: ['Daniel', 'Juan', 'Pepito']
         }
-
-        return <ul>{this.props.items.map(createItem)}</ul>
+    },
+    funcionAgregaAmigo: function(txt){
+        this.state.amigos.push(txt)
+        this.setState({
+            amigos: this.state.amigos
+        })
+    },
+    render: function(){
+        return(
+            <div>
+                <h3>{this.state.nombre}</h3>
+                <AddAmigo  funcionAgregaAmigo={this.funcionAgregaAmigo}/>
+                <ListaAmigos lista={this.state.amigos} />
+            </div>
+        )
     }
 })
 
-//clase que crea el formulario y lo muestra junto con la lista de tareas
-var FormApp = React.createClass({
-    getInitialState: function()
-    {
-        return {
-            text: '',
-            items: ["a","b","c","d"]
-        };
+var AddAmigo = React.createClass({
+    getInitialState: function(){
+        return{
+            inputText: ''
+        }
     },
-    onChange: function(e)
-    {
-        this.setState({text: e.target.value});
+    updateAmigo: function(e){
+        this.setState({
+            inputText : e.target.value
+        })        
     },
-    removerElemento: function(index){
-
-    	this.setState({
-    		items : React.addons.update(this.state.items, {$splice: [[index, 1]]})
-    	})
+    btnAddAmigo: function(){
+        this.props.funcionAgregaAmigo(this.state.inputText)
+        this.setState({
+            inputText: ''
+        })
 
     },
-    handleSubmit: function(e)
-    {
-        e.preventDefault();
-        var nextItems = this.state.items.concat([this.state.text]);
-        var nextText = '';
-        this.setState({items: nextItems, text: nextText});
-    },
-    render: function()
-    {
-        return (
-            <div>
-                <h3>React Todo List</h3>
-                <TodoList items={this.state.items} hclick={this.removerElemento}/>
-                <form onSubmit={this.handleSubmit}>
-                  <input type="text" onChange={this.onChange} value={this.state.text} />
-                  <button type="submit">Add</button>
-                </form>
-            </div>
-        );
+    render: function(){
+        return(
+                <div>
+                    <input type="text" value={this.state.inputText} onChange={this.updateAmigo}/>
+                    <button onClick={this.btnAddAmigo}>add</button>
+                </div>
+            )
     }
-});
 
-ReactDOM.render( <FormApp / > ,
+})
+
+var ListaAmigos = React.createClass({
+    render: function(){
+        var listItems = this.props.lista.map(function(amigo){
+            return <li>{amigo}</li>
+        })
+        return(
+                <ul>{listItems}</ul>
+            )
+    }
+})
+
+ReactDOM.render( <AmigosContenedor / > ,
   document.getElementById('app')
 )
